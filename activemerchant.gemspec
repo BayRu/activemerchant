@@ -1,10 +1,10 @@
 spec = Gem::Specification.new do |s|
   s.name = 'activemerchant'
-  s.version = '1.4.1'
+  s.version = '1.4.1.bayru1'
   s.summary = "Framework and tools for dealing with credit card transactions."
   s.has_rdoc = true
 
-  s.files = Dir.glob (["lib/**/*", "test/**/*", "script/**/*", "[a-zA-Z]*"]).reject do |f| f.match(/\.svn$/) end
+  s.files = Dir.glob(["lib/**/*", "test/**/*", "script/**/*", "[a-zA-Z]*"]).reject do |f| f.match(/\.svn$/) end
   s.rubyforge_project = "activemerchant"
   s.require_path = 'lib'
   s.author = "Tobias Luetke"
