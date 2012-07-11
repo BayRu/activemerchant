@@ -12,7 +12,9 @@ PKG_VERSION = "1.4.1"
 PKG_NAME = "activemerchant"
 PKG_FILE_NAME = "#{PKG_NAME}-#{PKG_VERSION}"
 
-PKG_FILES = Dir.glob  ["lib/**/*", "test/**/*", "script/**/*", "[a-zA-Z]*"].exclude(/\.svn$/)
+PKG_FILES = FileList[
+    "lib/**/*", "test/**/*", "script/**/*", "[a-zA-Z]*"
+  ].exclude(/\.svn$/)
 
 
 desc "Default Task"

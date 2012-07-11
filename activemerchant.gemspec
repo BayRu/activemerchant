@@ -4,10 +4,7 @@ spec = Gem::Specification.new do |s|
   s.summary = "Framework and tools for dealing with credit card transactions."
   s.has_rdoc = true
 
-  s.files = FileList[
-    "lib/**/*", "test/**/*", "script/**/*", "[a-zA-Z]*"
-  ].exclude(/\.svn$/)
-
+  s.files = Dir.glob  ["lib/**/*", "test/**/*", "script/**/*", "[a-zA-Z]*"].exclude(/\.svn$/)
   s.rubyforge_project = "activemerchant"
   s.require_path = 'lib'
   s.author = "Tobias Luetke"
