@@ -506,6 +506,7 @@ module ActiveMerchant #:nodoc:
             xml.tag!('customerPaymentProfileId', transaction[:customer_payment_profile_id])
             xml.tag!('approvalCode', transaction[:approval_code]) if transaction[:type] == :capture_only
             add_order(xml, transaction[:order]) if transaction[:order]
+            xml.tag!('cardCode', transaction[:ccv]) if transaction[:ccv]
           end
         end
       end
@@ -583,6 +584,7 @@ module ActiveMerchant #:nodoc:
           xml.tag!('cardNumber', credit_card.number)
           # The expiration date of the credit card used for the subscription
           xml.tag!('expirationDate', expdate(credit_card))
+          xml.tag!('cardCode', credit_card.ccv)
         end
       end
       
@@ -629,6 +631,7 @@ module ActiveMerchant #:nodoc:
       
       def commit(action, request)
         url = test? ? test_url : live_url
+        dputs request
         xml = ssl_post(url, request, "Content-Type" => "text/xml")
         
         response_params = parse(action, xml)
