@@ -631,7 +631,6 @@ module ActiveMerchant #:nodoc:
       
       def commit(action, request)
         url = test? ? test_url : live_url
-        dputs request
         xml = ssl_post(url, request, "Content-Type" => "text/xml")
         
         response_params = parse(action, xml)
