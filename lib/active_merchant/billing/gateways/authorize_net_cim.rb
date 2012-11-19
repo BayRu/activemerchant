@@ -96,6 +96,10 @@ module ActiveMerchant #:nodoc:
         super
       end
 
+      def test?
+        @options[:test] == true
+      end
+
       # Creates a new customer profile along with any customer payment profiles and customer shipping addresses
       # for the customer profile.
       # 
