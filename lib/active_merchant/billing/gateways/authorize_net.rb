@@ -72,6 +72,10 @@ module ActiveMerchant #:nodoc:
         super
       end
 
+      def test?
+        @options[:test]
+      end
+
       # Performs an authorization, which reserves the funds on the customer's credit card, but does not
       # charge the card.
       #
@@ -231,7 +235,9 @@ module ActiveMerchant #:nodoc:
         # Only activate the test_request when the :test option is passed in
         parameters[:test_request] = @options[:test] ? 'TRUE' : 'FALSE'
 
-        url = test? ? self.test_url : self.live_url
+        test_url =  "https://test.authorize.net/gateway/transact.dll"
+
+        url = test? ? test_url : self.live_url
         data = ssl_post url, post_data(action, parameters)
 
         response = parse(data)
