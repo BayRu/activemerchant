@@ -48,7 +48,8 @@ module ActiveMerchant #:nodoc:
         :update_customer_payment_profile => 'updateCustomerPaymentProfile',
         :update_customer_shipping_address => 'updateCustomerShippingAddress',
         :create_customer_profile_transaction => 'createCustomerProfileTransaction',
-        :validate_customer_payment_profile => 'validateCustomerPaymentProfile'
+        :validate_customer_payment_profile => 'validateCustomerPaymentProfile',
+        :get_customer_profile_ids => 'getCustomerProfileIds'
       }
       
       CIM_TRANSACTION_TYPES = {
@@ -114,6 +115,11 @@ module ActiveMerchant #:nodoc:
         # TODO Add requires
         request = build_request(:create_customer_profile, options)
         commit(:create_customer_profile, request)
+      end
+
+      def get_customer_profile_ids(options = {})
+        request = build_request(:get_customer_profile_ids, options)
+        commit(:get_customer_profile_ids, request)
       end
 
       # Creates a new customer payment profile for an existing customer profile.
@@ -472,6 +478,10 @@ module ActiveMerchant #:nodoc:
         xml.tag!('customerShippingAddressId', options[:customer_address_id]) if options[:customer_address_id]
         xml.tag!('validationMode', CIM_VALIDATION_MODES[options[:validation_mode]]) if options[:validation_mode]
 
+        xml.target!
+      end
+
+      def build_get_customer_profile_ids_request(xml, options)
         xml.target!
       end
 
